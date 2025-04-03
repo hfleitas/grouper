@@ -1,1 +1,23 @@
-# dorado
+# Dorado
+
+### Resources
+- [Kafka to Eventstream](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
+- [Kafka to Eventhouse](https://learn.microsoft.com/en-us/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
+
+```kql
+datatable (id:int, nombre:string, propiedades:dynamic, fecha:datetime)[
+    1, 'sensor', '{ "deviceId": "axd1y45",  "value": 42,  "time": "2024-04-03T16:25:00Z",  "tag": "temperature" }', '1/1/2025'
+]
+| getschema 
+
+
+// this is a print example -- pls disregard!
+let message1 ='{ "id": 1,  "content": "Hello, world!",  "timestamp": "2024-04-03T16:05:00Z" }';
+let message2 ='{ "message_id": 2,  "text": "This is a test message.",  "created_at": "2024-04-03T16:10:00Z",  "author": "John Doe" }';
+let message3 ='{ "msg_id": 3,  "message": "Thanks for using this service!",  "time": "2024-04-03T16:15:00Z",  "category": "Feedback" }';
+let message4 ='{ "deviceId": "axd1y45",  "value": 42,  "time": "2024-04-03T16:25:00Z",  "tag": "temperature" }';
+print full_record=message1
+| union (print full_record=message2), (print full_record=message3), (print full_record=message4)
+| project todynamic(full_record)
+```
+
