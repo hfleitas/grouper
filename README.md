@@ -1,8 +1,9 @@
 # Dorado
 
 ### Resources
-- [Kafka to Eventstream](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
-- [Kafka to Eventhouse](https://learn.microsoft.com/en-us/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
+- [Kafka to Eventstream](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
+- [Kafka to Eventhouse](https://learn.microsoft.com/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
+- [Eventhouse Notebook](https://learn.microsoft.com/fabric/real-time-intelligence/notebooks)
 
 ```kql
 datatable (id:int, nombre:string, propiedades:dynamic, fecha:datetime)[
