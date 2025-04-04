@@ -2,6 +2,7 @@
 .execute database script <|
 .drop table test23 ifexists;
 .create table test23 (data:dynamic);
+.alter column test23.data policy encoding type='BigObject32';
 .create table test23 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```;
 // .alter table test23 (data:dynamic, Time:datetime);
 // .create table test23 ingestion json mapping "jsonMapping2" ```[{"Column":"data","Properties":{"Path":"$"}},{"Column":"Time","Properties":{"Path":"$.Time"}}]```;
