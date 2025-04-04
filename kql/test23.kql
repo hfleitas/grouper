@@ -1,0 +1,7 @@
+// create a mapping where I map Time and the full record $, then an update policy to remove time from the full record. 
+.execute database script <|
+.drop table test23 ifexists;
+.create table test23 (data:dynamic);
+.create table test23 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```;
+// .alter table test23 (data:dynamic, Time:datetime);
+// .create table test23 ingestion json mapping "jsonMapping2" ```[{"Column":"data","Properties":{"Path":"$"}},{"Column":"Time","Properties":{"Path":"$.Time"}}]```;
