@@ -3,3 +3,5 @@
 .alter column test22.data policy encoding type='BigObject32'
  
 //.create table test22 ingestion parquet mapping "Mapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```
+
+.create table test22 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```
