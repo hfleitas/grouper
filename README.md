@@ -9,7 +9,7 @@
 graph LR
    parquet-->nb
    nb{notebook}-->|json | eventhouse
-   eventhouse-->|mapping | silver
+   eventhouse-->|mapping | table
 ```
 
 
