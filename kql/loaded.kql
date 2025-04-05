@@ -10,8 +10,8 @@ test22
 // do I write to kusto if silver 100s or the 12k to pull the 100s and carry the 12k into silver?
 // 1. json mapping that writes selected cols plus full record (most likely)
 // 2. json mapping that writes selected cols (preferred)
-// 2. spark preprocesses and writes selected cols plus full record
-// 3. spark preprocesses and writes selected cols 
+// 3. spark preprocesses and writes selected cols plus full record
+// 4. spark preprocesses and writes selected cols (same as #2 but pushes logic to spark)
 
 // create a mapping where I map Time and the full record $, then an update policy to remove time from the full record. 
 .execute database script <|
