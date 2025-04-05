@@ -1,7 +1,17 @@
-.create table test22 (data:dynamic )
- 
-.alter column test22.data policy encoding type='BigObject32'
- 
-//.create table test22 ingestion parquet mapping "Mapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```
+.execute database script <|
+.drop table test22 ifexists;
+.create table test22 (data:dynamic);
+.alter column test22.data policy encoding type='BigObject32';
+.create table test22 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```;
 
-.create table test22 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```
+// .create table test22 ingestion json mapping "jsonMapping2" ```[{"column":"data","path":"$","datatype":"dynamic"},{"column":"Time","path":"$.Time","datatype":"datetime"}]```;
+// .create table test22 ingestion json mapping "jsonMapping3" ```
+// [
+//   {"Column": "data",                            "Properties": {"Path": "$"}},
+//   {"Column": "Time",                            "Properties": {"Path": "$.Time"}},
+//   {"Column": "0-0 Welder Speed Reference Percent",   "Properties": {"Path": "$.[\'[0:0]Welder Speed Reference %\']"}}
+// ]
+// ```;
+
+test22
+| take 10
