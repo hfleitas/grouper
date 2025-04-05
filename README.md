@@ -6,7 +6,7 @@
 - Addressing fragmented analytics due to wrong source choice and sparse data. 
 - Doing Data Science over this data. 
 
-
+## Flow
 ```mermaid
 graph LR
    parquet-->nb
@@ -14,7 +14,7 @@ graph LR
    eventhouse-->|mapping | table
 ```
 
-### Resources – Tools, Content & Data Science
+## Resources – Tools, Content & Data Science
 
 - [Kafka to Eventstream](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
 - [Kafka to Eventhouse](https://learn.microsoft.com/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
