@@ -22,3 +22,5 @@ print full_record=message1
 | project todynamic(full_record)
 ```
 
+## Thank you!
+![grouper](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Baltimore_Aquarium_-_Mycteroperca_microlepis_-_05.jpg/1600px-Baltimore_Aquarium_-_Mycteroperca_microlepis_-_05.jpg?20160812032609)
