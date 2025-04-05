@@ -5,6 +5,12 @@
 - [Kafka to Eventhouse](https://learn.microsoft.com/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
 - [Eventhouse Notebook](https://learn.microsoft.com/fabric/real-time-intelligence/notebooks)
 
+```mermaid
+graph LR
+   parquet-->nb
+   nb{notebook}-->|json | eventhouse
+   eventhouse-->|mapping | silver
+```
 
 
 ## Thank you!
