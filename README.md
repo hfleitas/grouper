@@ -1,4 +1,4 @@
-# Dorado
+# Grouper
 
 ### Resources
 - [Kafka to Eventstream](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
