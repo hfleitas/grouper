@@ -20,6 +20,7 @@ graph LR
 - [Kafka to Eventhouse](https://learn.microsoft.com/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
 - [Eventhouse Notebook](https://learn.microsoft.com/fabric/real-time-intelligence/notebooks)
 - [Eventhouse json mapping](https://learn.microsoft.com/kusto/management/json-mapping?view=microsoft-fabric)
+- [Eventhouse entity naming rules](https://learn.microsoft.com/kusto/query/schema-entities/entity-names?view=microsoft-fabric#identifier-naming-rules)
 - [aka.ms/CMF](https://aka.ms/cmf) - account team nominates customer.
 - [aka.ms/vbdfabric](https://aka.ms/vbdfabric) – Upskilling, Architecture & Design, POC collateral can be used by account team to dispatch.
 - [Kusto Data Connectors](https://learn.microsoft.com/fabric/real-time-intelligence/data-connectors/data-connectors)
