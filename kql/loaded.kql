@@ -1,0 +1,35 @@
+test22
+| top 1 by ingestion_time()
+| project bag_keys(data)
+
+test22
+| top 1 by ingestion_time()
+| evaluate bag_unpack(data)
+
+
+// do I write to kusto if silver 100s or the 12k to pull the 100s and carry the 12k into silver?
+// 1. json mapping that writes selected cols plus full record (most likely)
+// 2. json mapping that writes selected cols (preferred)
+// 2. spark preprocesses and writes selected cols plus full record
+// 3. spark preprocesses and writes selected cols 
+
+// create a mapping where I map Time and the full record $, then an update policy to remove time from the full record. 
+.execute database script <|
+.drop table test23 ifexists;
+.create table test23 (data:dynamic);
+.alter column test23.data policy encoding type='BigObject32';
+.create table test23 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```;
+// .alter table test23 (data:dynamic, Time:datetime);
+// .create table test23 ingestion json mapping "jsonMapping2" ```[{"Column":"data","Properties":{"Path":"$"}},{"Column":"Time","Properties":{"Path":"$.Time"}}]```;
+
+
+test23 | top 10 by ingestion_time()
+
+
+set maxoutputcolumns=13000;
+test23
+| take 1
+| project Time=data.Time, Data=bag_remove_keys(data,dynamic(["Time"]))
+
+
+.show cluster
