@@ -30,8 +30,9 @@ graph LR
 - ⭐ [ElasticSearch Migration Articles](https://techcommunity.microsoft.com/search?q=elasticsearch&location=board%3AAzureDataExplorer)
 - [L200-RTI-Pitch-Deck](https://livesend.microsoft.com/i/PLUSSIGNr___hsgumvgQLZHEMQU33BhzpcHEMh8PLUSSIGN0NfgovPLUSSIGNzss3W7V0QX1lVBwuSUdImTNUYtbcoHcLCZs1NDzxMCCne8UWKGnT2CUv63Zjy___4QgyDbFSFoA3Y6CAfIHCUvuDQHNF)
 - ⭐ [Time series analytics](https://learn.microsoft.com/kusto/query/time-series-analysis?view=microsoft-fabric)
-- ⭐[Eventhouse Functions Library](https://learn.microsoft.com/kusto/functions-library/functions-library?view=microsoft-fabric)
+- ⭐ [Eventhouse Functions Library](https://learn.microsoft.com/kusto/functions-library/functions-library?view=microsoft-fabric)
 - [Use an Eventhouse as a vector database](https://learn.microsoft.com/fabric/real-time-intelligence/vector-database-eventhouse)
+- ⭐ [Data Agent](https://learn.microsoft.com/fabric/data-science/how-to-create-data-agent)
 
 ## 🪄 Magic
 ![image](https://github.com/user-attachments/assets/e9b9fca2-d72f-47f9-9aa2-0b486ed5f895)
