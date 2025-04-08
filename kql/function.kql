@@ -45,3 +45,8 @@ test22
     }
 ]
 ```;
+
+
+
+union test22, test222
+| count
