@@ -12,6 +12,8 @@ graph LR
    parquet-->nb
    nb{notebook}-->|json | eventhouse
    eventhouse-->|mapping | table
+   table-->dashboard
+   table-->agent
 ```
 
 ## Resources – Tools, Content & Data Science
