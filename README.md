@@ -33,6 +33,8 @@ graph LR
 - ⭐[Eventhouse Functions Library](https://learn.microsoft.com/kusto/functions-library/functions-library?view=microsoft-fabric)
 - [Use an Eventhouse as a vector database](https://learn.microsoft.com/fabric/real-time-intelligence/vector-database-eventhouse)
 
+## 🪄 Magic
+![image](https://github.com/user-attachments/assets/e9b9fca2-d72f-47f9-9aa2-0b486ed5f895)
 
 ## Thank you!
 ![grouper](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Baltimore_Aquarium_-_Mycteroperca_microlepis_-_05.jpg/1600px-Baltimore_Aquarium_-_Mycteroperca_microlepis_-_05.jpg?20160812032609)
