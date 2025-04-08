@@ -1,0 +1,47 @@
+// do I write to kusto if silver 100s or the 12k to pull the 100s and carry the 12k into silver?
+// 1. json mapping that writes selected cols plus full record (most likely)
+// 2. json mapping that writes selected cols (preferred)
+// 2. spark preprocesses and writes selected cols plus full record
+// 3. spark preprocesses and writes selected cols 
+
+set notruncation;
+set maxoutputcolumns=13000;
+test22 
+| take 1 
+| evaluate bag_unpack(data)
+
+
+.execute database script <|
+.drop table test22 ifexists;
+.create table test22 (data:dynamic);
+.alter column test22.data policy encoding type='BigObject32';
+.create table test22 ingestion json mapping "jsonMapping" ```[{"column":"data","path":"$","datatype":"dynamic"}]```;
+
+.create-or-alter function with(folder='silver') fn_test22(){
+    test22
+    | project Time=data.Time,
+    ["0-0Welder Speed Reference Percent"]=data.["[0:0]Welder Speed Reference %"],
+    ["0-1Welder Speed Actual"]=data.["[0:1]Welder Speed Actual"],
+    ["0-2Welder Laser Power Reference"]=data.["[0:2]Welder Laser Power Reference"],
+    ["0-3Welder Laser Power Actual"]=data.["[0:3]Welder Laser Power Actual"],
+    ["0-4Welder Laser Position Focus Reference"]=data.["[0:4]Welder Laser Position Focus Reference"],
+    ["0-5Welder Laser Position Focus Aactual"]=data.["[0:5]Welder Laser Position Focus Aactual"],
+    ["0-6Welder Laser Head Pressure Reference Percent"]=data.["[0:6]Welder Laser Head Pressure Reference %"],
+    ["0-7Welder Laser Head Pressure Actual"]=data.["[0:7]Welder Laser Head Pressure Actual"],
+    ["0-8Welder Planishing Pressure Reference"]=data.["[0:8]Welder Planishing Pressure Reference"]
+}
+
+.execute database script <|
+.set-or-replace test222 <| fn_test22 | limit 0;
+.alter table test222 policy update
+```
+[
+    {
+        "IsEnabled": true,
+        "Source": "test22",
+        "Query": "fn_test22()",
+        "IsTransactional": false,
+        "PropagateIngestionProperties": false
+    }
+]
+```;
