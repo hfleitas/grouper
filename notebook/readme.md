@@ -6,7 +6,7 @@ Py4JJavaError: An error occurred while calling o5704.save. : org.apache.spark.Sp
 ```
 Solutions:
 1. Add a `.option("writeMode","Queued")`, that will fix this issue.
-2. Use json format and mapping. (preferred)
+2. Use option format & mapping for json. (preferred)
 
 
 ## Is it possible for the spark connector to run control commands? 
