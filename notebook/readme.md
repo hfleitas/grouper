@@ -16,4 +16,4 @@ kql = ".execute database script <| \
 .create-or-alter test22 (data:dynamic); \
 .alter column test22.data policy encoding type='BigObject32';"
 ```
-Yes, see sample [KustoControlCmd.py](KustoControlCmd.py).
+Yes, see sample [KustoControlCmds.py](KustoControlCmds.py).
