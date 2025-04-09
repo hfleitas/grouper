@@ -4,7 +4,9 @@
 ```
 Py4JJavaError: An error occurred while calling o5704.save. : org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 23.0 failed 4 times, most recent failure: Lost task 0.3 in stage 23.0 (TID 40) (vm-69326674 executor 2): com.microsoft.kusto.spark.exceptions.RetriesExhaustedException: Failed to move extents after 11 tries.
 ```
-Add a `.option("writeMode","Queued")`, that will fix this issu.
+Solutions:
+1. Add a `.option("writeMode","Queued")`, that will fix this issue.
+2. Use json format and mapping. (preferred)
 
 
 ## Is it possible for the spark connector to run control commands? 
