@@ -9,7 +9,7 @@
 ## Flow
 ```mermaid
 graph LR
-   parquet-->nb
+   parquet-->|eventstream | nb
    nb{notebook}-->|json | eventhouse
    eventhouse-->|mapping | table
 ```
