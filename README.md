@@ -18,6 +18,7 @@ graph LR
 
 - [Kafka to Eventstream](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
 - [Kafka to Eventhouse](https://learn.microsoft.com/azure/data-explorer/integrate-overview?tabs=connectors#apache-kafka)
+- [Eventstreams - Azure Blob Storage events](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/add-source-azure-blob-storage)
 - [Eventhouse Notebook](https://learn.microsoft.com/fabric/real-time-intelligence/notebooks)
 - [Eventhouse json mapping](https://learn.microsoft.com/kusto/management/json-mapping?view=microsoft-fabric)
 - [Eventhouse entity naming rules](https://learn.microsoft.com/kusto/query/schema-entities/entity-names?view=microsoft-fabric#identifier-naming-rules)
