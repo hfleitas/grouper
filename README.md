@@ -1,7 +1,9 @@
 # Grouper
+## Objective
+- Doing timeseries analytics in Fabric.
 
 ### Main Points 
-- Getting Elasticsearch data into Fabric. 
+- ~~Getting Elasticsearch data into Fabric.~~
 - Minimizing latency due to the hops of sensor > storage > elastic > app. 
 - Addressing fragmented analytics due to wrong source choice and sparse data. 
 - Doing Data Science over this data. 
