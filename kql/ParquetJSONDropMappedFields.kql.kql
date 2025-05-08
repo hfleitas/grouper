@@ -1,0 +1,7 @@
+.execute database script <| 
+.create table ['Logs']  (Record:dynamic)
+.create table ['Logs'] ingestion parquet mapping 'Logs_mapping' '[{"column":"Record", "Properties":{"Path":"$",  "Transform":"DropMappedFields"}}]'
+.ingest async into table ['Logs'] (h' put blob path here') with (format='parquet',ignoreSizeLimit=true,ingestionMappingReference='Logs_mapping',ingestionMappingType='parquet')
+
+Logs
+| take 1
