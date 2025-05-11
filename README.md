@@ -18,7 +18,9 @@ graph LR
 
 ## Implementation steps
 1. [Step 1](step1.md)
-
+2. [Step 2](step2.md)
+3. [Step 3](step3.md)
+   
 ## Resources – Tools, Content & Data Science
 
 - [Kafka to Eventstream](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
