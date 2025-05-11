@@ -15,3 +15,6 @@
 
 test22
 | take 10
+
+test22
+| count
