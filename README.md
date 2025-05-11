@@ -16,6 +16,9 @@ graph LR
    eventhouse-->|mapping | table
 ```
 
+## Implementation steps
+1. [Step 1](step1.md)
+
 ## Resources – Tools, Content & Data Science
 
 - [Kafka to Eventstream](https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/connect-connecots-in-virtual-network-on-premises)
