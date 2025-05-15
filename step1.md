@@ -13,3 +13,6 @@
 11. Lower the Eventhouse [Caching policy](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/data-policies) on the raw/bronze table (test22) to zero or as necessary.
 12. Verify OneLake availability is enabled for both tables of the update policy.
 13. Lower the [Mirroring policy](https://learn.microsoft.com/en-us/kusto/management/alter-merge-mirroring-policy-command?view=microsoft-fabric) as needed, either for the entire database or per table.
+
+## 🎯 Completed Step 1
+- Proceed to [step2.md](step2.md).
