@@ -1,4 +1,5 @@
-FactoryJsonMapping
+.create-or-alter function with(folder='silver') fn_test22(){
+    test22
     | sort by ingestion_time() desc
     | extend rn=row_number() //Add Row Number since duplicate
     | mv-expand Key = bag_keys(data) // eppand key in rows
@@ -9,3 +10,4 @@ FactoryJsonMapping
     | extend  unpacked=parse_json((tostring(JSONDict)))
     | evaluate bag_unpack(unpacked) //  parses the dynamic column and pulls out all fields into their own columns
     | project-away rn,JSONDict
+}
