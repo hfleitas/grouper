@@ -1,0 +1,11 @@
+FactoryJsonMapping
+    | sort by ingestion_time() desc
+    | extend rn=row_number() //Add Row Number since duplicate
+    | mv-expand Key = bag_keys(data) // eppand key in rows
+    | extend KeyStr = tostring(Key),Value = data[tostring(Key)] // fetch key and value from data
+    // | where KeyStr startswith  "[0_" or KeyStr startswith  "[0:" or KeyStr startswith "Time" // apply filter for selecting diff group columns
+    | extend p = bag_pack(replace_string(replace_string(replace_string(replace_string(KeyStr,"[",""),"]",""),":","-"),"%","Percentage") , Value)  // Creates a dynamic property bag object from a list of keys and values
+    | summarize  JSONDict = make_bag(p) by rn //Creates a dynamic JSON property bag (dictionary)  group by rn
+    | extend  unpacked=parse_json((tostring(JSONDict)))
+    | evaluate bag_unpack(unpacked) //  parses the dynamic column and pulls out all fields into their own columns
+    | project-away rn,JSONDict
