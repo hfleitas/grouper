@@ -1,0 +1,19 @@
+//at table level 
+
+.alter  table Ternium_0 policy mirroring
+ dataformat = parquet
+ with (
+  IsEnabled  = true,
+ Backfill = false,
+ TargetLatencyInMinutes = 5 //min should be 5 mins
+ )
+
+ //at database level
+
+ .alter database [DatabaseName] policy mirroring 
+dataformat = parquet 
+with (
+    IsEnabled = true,
+    Backfill = false,
+    TargetLatencyInMinutes = 5 //min should be 5 mins
+)
