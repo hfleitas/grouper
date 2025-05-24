@@ -5,7 +5,7 @@
  with (
   IsEnabled  = true,
  Backfill = false,
- TargetLatencyInMinutes = 5 //min should be 5 mins
+ TargetLatencyInMinutes = 5 //Delay can be adjusted between min 5 min to 3 hrs
  )
 
  //at database level
@@ -15,5 +15,5 @@ dataformat = parquet
 with (
     IsEnabled = true,
     Backfill = false,
-    TargetLatencyInMinutes = 5 //min should be 5 mins
+    TargetLatencyInMinutes = 5 //Delay can be adjusted between min 5 min to 3 hrs
 )
