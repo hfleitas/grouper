@@ -1,6 +1,6 @@
 # Step 2
 
-1. Create Eventstream.
+1. Create [Eventstream](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/event-streams/create-manage-an-eventstream).
 2. Add source azure storage blob event.
 3. Add destination Reflex to trigger Fabric item Notebook.
 4. Create a new Notebook similar to previous Notebook that takes blob URI paramater.
