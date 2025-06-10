@@ -77,8 +77,10 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import to_json, struct
 
 df = spark.read.parquet(abfs_path)
+formatted_df = df.withColumn("Time", date_format("Time", "yyyy-MM-dd HH:mm:ss.SSSSSS"))
+jsonDf = formatted_df.select(to_json(struct("*")).alias("data"))
 #df = df.select("[0:0]Welder Speed Reference %","[0:1]Welder Speed Actual","[0:2]Welder Laser Power Reference","Time")
-jsonDf = df.select(to_json(struct("*")).alias("data"))
+# jsonDf = df.select(to_json(struct("*")).alias("data"))
 
 
 # In[12]:
