@@ -19,16 +19,16 @@ test22
 
 .create-or-alter function with(folder='silver') fn_test22(){
     test22
-    | project Time=data.Time,
-    ["0-0Welder Speed Reference Percent"]=data.["[0:0]Welder Speed Reference %"],
-    ["0-1Welder Speed Actual"]=data.["[0:1]Welder Speed Actual"],
-    ["0-2Welder Laser Power Reference"]=data.["[0:2]Welder Laser Power Reference"],
-    ["0-3Welder Laser Power Actual"]=data.["[0:3]Welder Laser Power Actual"],
-    ["0-4Welder Laser Position Focus Reference"]=data.["[0:4]Welder Laser Position Focus Reference"],
-    ["0-5Welder Laser Position Focus Aactual"]=data.["[0:5]Welder Laser Position Focus Aactual"],
-    ["0-6Welder Laser Head Pressure Reference Percent"]=data.["[0:6]Welder Laser Head Pressure Reference %"],
-    ["0-7Welder Laser Head Pressure Actual"]=data.["[0:7]Welder Laser Head Pressure Actual"],
-    ["0-8Welder Planishing Pressure Reference"]=data.["[0:8]Welder Planishing Pressure Reference"]
+    | project Time=todatetime(data.Time),
+    ["0-0Welder Speed Reference Percent"]= toint(data.["[0:0]Welder Speed Reference %"]),
+    ["0-1Welder Speed Actual"]=toint(data.["[0:1]Welder Speed Actual"]),
+    ["0-2Welder Laser Power Reference"]=toint(data.["[0:2]Welder Laser Power Reference"]),
+    ["0-3Welder Laser Power Actual"]= toint(data.["[0:3]Welder Laser Power Actual"]),
+    ["0-4Welder Laser Position Focus Reference"]=todecimal(data.["[0:4]Welder Laser Position Focus Reference"]),
+    ["0-5Welder Laser Position Focus Aactual"]=toreal(data.["[0:5]Welder Laser Position Focus Aactual"]),
+    ["0-6Welder Laser Head Pressure Reference Percent"]=toint(data.["[0:6]Welder Laser Head Pressure Reference %"]),
+    ["0-7Welder Laser Head Pressure Actual"]=todecimal(data.["[0:7]Welder Laser Head Pressure Actual"]),
+    ["0-8Welder Planishing Pressure Reference"]=toint(data.["[0:8]Welder Planishing Pressure Reference"])
 }
 
 .execute database script <|
