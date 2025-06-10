@@ -55,13 +55,13 @@ File = FileList.pop()
 blob_account_name = "iotmonitoringsa26915"
 blob_container_name = "widefile"
 blob_relative_path = File  # Replace with your actual file path
-blob_sas_token = r"sp=r&st=2025-05-21T10:37:50Z&se=2025-05-30T18:37:50Z&spr=https&sv=2024-11-04&sr=c&sig=M8u1qBPe3qeZ2fvyley6iOB8cdIVXJD6yp8wtpM6NrE%3D"
+# blob_sas_token = r"sp=r&st=2025-05-21T10:37:50Z&se=2025-05-30T18:37:50Z&spr=https&sv=2024-11-04&sr=c&sig=M8u1qBPe3qeZ2fvyley6iOB8cdIVXJD6yp8wtpM6NrE%3D"
 
 # Set Spark configuration to use the SAS token
-spark.conf.set(
-  f"fs.azure.sas.{blob_container_name}.{blob_account_name}.dfs.core.windows.net",
-  blob_sas_token
-)
+# spark.conf.set(
+#   f"fs.azure.sas.{blob_container_name}.{blob_account_name}.dfs.core.windows.net",
+#   blob_sas_token
+# )
 
 # Build the ABFS path
 abfs_path = f"abfss://{blob_container_name}@{blob_account_name}.dfs.core.windows.net/{blob_relative_path}"
