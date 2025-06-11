@@ -74,7 +74,7 @@ abfs_path = f"abfss://{blob_container_name}@{blob_account_name}.dfs.core.windows
 
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import to_json, struct
+from pyspark.sql.functions import to_json, struct , date_format
 
 df = spark.read.parquet(abfs_path)
 formatted_df = df.withColumn("Time", date_format("Time", "yyyy-MM-dd HH:mm:ss.SSSSSS"))
