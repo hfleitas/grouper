@@ -13,7 +13,8 @@
 graph LR
    parquet-->|eventstream | nb
    nb{notebook}-->|json | eventhouse
-   eventhouse-->|mapping | table
+   eventhouse-->|mapping | rawtable
+   rawtable-->|kqlfunction | silvertable
 ```
 
 ## Implementation steps
