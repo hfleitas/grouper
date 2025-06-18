@@ -11,7 +11,7 @@
 ## Flow
 ```mermaid
 graph LR
-   parquet-->|eventstream | nb
+   parquet-->|eventstream_onblobcreated_activator | nb
    nb{notebook}-->|json | eventhouse
    eventhouse-->|mapping | rawtable
    rawtable-->|function | silvertable
