@@ -1,0 +1,50 @@
+//Basic Trending Query
+silver_expanded_64Cols
+| where Time between (ago(7d) .. now())
+| summarize 
+    Avg_ACTUAL_POSI = avg(['2_100_1 L_C ACTUAL POSI_cm - N1E064']), //Actual Roll positioning
+    Avg_CURR_REF = avg(['2_114_No_1 L_C CURR_ REF_digit - N1E072']), //Current Feedback
+    Avg_tn_FB = avg(['5_77_1-2STD SUM_TENSION_0_1KN- N1E64D']), //Tension Feedback
+    Avg_SP_FB = avg(['2_44_No_1 L_C SP_FB_10-2 mpm - N1E02C'])//Speed Feedback
+    by bin(Time, 1m)
+| order by Time asc
+| render timechart
+
+//Moving Average / Rolling Trend Query
+silver_expanded_64Cols
+| make-series Avg_ACTUAL_POSI = avg(['2_100_1 L_C ACTUAL POSI_cm - N1E064']) on Time step 1m
+| extend Fir = series_fir(Avg_ACTUAL_POSI, dynamic([1,1]))
+// | extend fitY=series_fit_line_dynamic(Avg_ACTUAL_POSI).line_fit
+// | extend fitY=series_fit_2lines_dynamic(Avg_ACTUAL_POSI).line_fit
+| render timechart 
+
+// Anomoly Detection
+silver_expanded_64Cols
+| where Time between (ago(7d) .. now())
+| make-series ACTUAL_POSI_series = avg(['2_100_1 L_C ACTUAL POSI_cm - N1E064']) on Time step 1m
+| extend (5_baseline, 2_seasonal, 3_trend, 4_residual) = series_decompose(ACTUAL_POSI_series)
+| render timechart
+
+silver_expanded_64Cols
+| where Time between (ago(7d) .. now())
+| make-series ACTUAL_POSI_series = avg(['2_100_1 L_C ACTUAL POSI_cm - N1E064']) on Time step 1m
+| extend (anomalies, score, baseline) = series_decompose_anomalies(ACTUAL_POSI_series)
+| render timechart
+
+//forecast
+let Horizon = 1d;
+let dt = 1h;
+silver_expanded_64Cols
+| where Time between (ago(7d) .. now())
+| make-series ACTUAL_POSI_series = avg(['2_100_1 L_C ACTUAL POSI_cm - N1E064']) on Time step 1m
+| extend Forecast = series_decompose_forecast(ACTUAL_POSI_series,5)
+| render timechart 
+
+//Correlation Analysis between signals
+silver_expanded_64Cols
+| where Time between (ago(7d) .. now())
+| make-series 
+    ACTUAL_POSI_series = avg(['2_100_1 L_C ACTUAL POSI_cm - N1E064']),
+    CURR_REF_series = avg(['2_114_No_1 L_C CURR_ REF_digit - N1E072'])
+    on Time step 1m
+| extend correlation_result = series_pearson_correlation(ACTUAL_POSI_series, CURR_REF_series)
