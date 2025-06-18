@@ -2,7 +2,8 @@
 
 1. Run queryset [timeseriesanalytics-sample.kql](./kql/timeseriesanalytics-sample.kql) by adding the Help cluster URI in your queryset connections pane and select the Samples db.
 2. See more [Time Series Analysis](https://learn.microsoft.com/kusto/query/time-series-analysis?view=microsoft-fabric).
-3. Adjust queries over your data as necessary.
+3. Example of [Time Series Analysis](./kql/timeseriesanalytics-sample.kql) over sample PLTCM data
+4. Adjust queries over your data as necessary.
 
 ### Next (Phase 2)
 
