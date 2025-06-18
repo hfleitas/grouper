@@ -26,7 +26,7 @@ graph LR
 3. [Step 3](step3.md)
 
 > [!NOTE]
-> For performance reasons & compute utilization it is a best practice to use the KQL function to flatten the payload and the notebook to simply ingest raw.
+> For performance reasons & compute utilization it is a best practice to use the KQL function to process the json fields into individual columns with aliases. Instead of trying to that in the notebook which would delay ingestion, simply use the notebook to write the data as quickly as possible by ingesting the full json raw. This guarrantees higher throughput speeds and the ability to write the data raw regardless of source schemas. 
 
 ## Resources – Tools, Content & Data Science
 
