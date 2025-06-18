@@ -11,3 +11,26 @@
     | evaluate bag_unpack(unpacked) //  parses the dynamic column and pulls out all fields into their own columns
     | project-away rn,JSONDict
 }
+
+
+.create-or-alter function with(folder='silver') fn_test22(){
+    test22
+    | extend  Time=todatetime(data.Time),
+    ["0-0Welder Speed Reference Percent"]= toint(data.["[0:0]Welder Speed Reference %"]),
+    ["0-1Welder Speed Actual"]=toint(data.["[0:1]Welder Speed Actual"]),
+    ["0-2Welder Laser Power Reference"]=toint(data.["[0:2]Welder Laser Power Reference"]),
+    ["0-3Welder Laser Power Actual"]= toint(data.["[0:3]Welder Laser Power Actual"]),
+    Remaining_Column_Data = bag_remove_keys(data,dynamic(["Time","[0:0]Welder Speed Reference %","[0:1]Welder Speed Actual","[0:2]Welder Laser Power Reference","[0:3]Welder Laser Power Actual"]))
+    | project Time,["0-0Welder Speed Reference Percent"],["0-1Welder Speed Actual"],["0-2Welder Laser Power Reference"],["0-3Welder Laser Power Actual"],Remaining_Column_Data
+//    dynamic_bronze_raw
+//     | sort by ingestion_time() desc 
+//     | extend rn=row_number() //Add Row Number
+//     | mv-expand Key = bag_keys(data) // eppand key in rows
+//     | extend KeyStr = tostring(Key),Value = data[tostring(Key)] // fetch key and value from data
+//     | where KeyStr startswith  "[0_" or KeyStr startswith  "[0:" or KeyStr startswith "Time" // apply filter for selecting diff group columns
+//     | extend p = bag_pack(replace_string(replace_string(replace_string(replace_string(replace_string(replace_string(replace_string(replace_string(KeyStr,"[",""),"]",""),":","-"),"%","Percentage"),"#","_"),"/","_"),")","_"),"(","_"), Value) // Creates a dynamic property bag object from a list of keys and values
+//     | summarize  JSONDict = make_bag(p) by rn //Creates a dynamic JSON property bag (dictionary)  group by rn
+//     | extend  unpacked=parse_json((tostring(JSONDict)))
+//     | evaluate bag_unpack(unpacked) //  parses the dynamic column and pulls out all fields into their own columns
+//     | project-away rn,JSONDict
+   }
