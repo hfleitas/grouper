@@ -71,14 +71,23 @@ abfs_path = f"abfss://{blob_container_name}@{blob_account_name}.dfs.core.windows
 # #### Process to JSON
 
 # In[5]:
-
-
-from pyspark.sql import SparkSession
 from pyspark.sql.functions import to_json, struct , date_format
+import multiprocessing
 
 df = spark.read.parquet(abfs_path)
-formatted_df = df.withColumn("Time", date_format("Time", "yyyy-MM-dd HH:mm:ss.SSSSSS"))
-jsonDf = formatted_df.select(to_json(struct("*")).alias("data"))
+num_partitions = multiprocessing.cpu_count() * 3
+df = df.withColumn("Time", date_format("Time", "yyyy-MM-dd HH:mm:ss.SSSSSSSSS"))
+#df = df.select("[0:0]Welder Speed Reference %","[0:1]Welder Speed Actual","[0:2]Welder Laser Power Reference","[0_1]ct miniature circuit breaker 120V AC undervoltage release","Time")
+# df = df.repartition(num_partitions) 
+jsonDf = df.select(to_json(struct("*")).alias("data"))
+jsonDf = jsonDf.persist()
+
+# from pyspark.sql import SparkSession
+# from pyspark.sql.functions import to_json, struct , date_format
+
+# df = spark.read.parquet(abfs_path)
+# formatted_df = df.withColumn("Time", date_format("Time", "yyyy-MM-dd HH:mm:ss.SSSSSS"))
+# jsonDf = df.select(to_json(struct("*")).alias("data"))
 #df = df.select("[0:0]Welder Speed Reference %","[0:1]Welder Speed Actual","[0:2]Welder Laser Power Reference","Time")
 # jsonDf = df.select(to_json(struct("*")).alias("data"))
 
