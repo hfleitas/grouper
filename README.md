@@ -17,6 +17,9 @@ graph LR
    rawtable-->|function | silvertable
 ```
 
+> [!IMPORTANT]
+> At the moment, Fabric Eventhouse Get Data UI does not support zstd parquet compression. Therefore, for the time being Eventstream blob events method of ingestion with automated notebook was implemented solution. This can be revisted to simplify the process once Kusto product group ships ability to ingest zstd compressed parquet files.
+
 ## Implementation steps
 1. [Step 1](step1.md)
 2. [Step 2](step2.md)
