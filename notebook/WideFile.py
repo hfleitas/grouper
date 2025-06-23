@@ -34,9 +34,11 @@ jsonDf = jsonDf.persist()
 # #### Write to Eventhouse with JSON mapping
 
 # In[10]:
+# added writeMode as Queued so will end notebook execution soon as continue loading data in queued manner.
 
 
 jsonDf.write.format("com.microsoft.kusto.spark.synapse.datasource").\
+option("writeMode","Queued").\
 option("kustoCluster","https://trd-wuyr5npkmn85n65q3m.z8.kusto.fabric.microsoft.com").\
 option("kustoDatabase","RTIDemo").\
 option("kustoTable", "test22").\
